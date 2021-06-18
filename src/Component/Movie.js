@@ -15,7 +15,7 @@ const Movie = () => {
                 {movie.map((mov,id)=>{
                     return(
                         <div className="card" key={id}>
-                            <img src={`https://image.tmdb.org/t/p/w300/${mov.poster_path}`} alt="Image not available" />
+                            <img src={`https://image.tmdb.org/t/p/w300/${mov.poster_path}`} alt="Not available" />
                             <p className="movieTitle">{mov.original_title}</p>
                             <p className="movieVote">Rating: {mov.vote_average}</p>
                         </div>
