@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -9,10 +10,18 @@ const Navbar = () => {
             </label>
             <label className="logo">Movie App</label>
             <ul>
-                <li>Trending</li>
-                <li>Movie</li>
-                <li>TV show</li>
-                <li>Search</li>
+                <li>
+                    <Link to="/">Trending</Link>
+                </li>
+                <li>
+                    <Link to="/movie">Movie</Link>
+                </li>
+                <li>
+                    <Link to="/tvshow">Tv Show</Link>
+                </li>
+                <li>
+                    <Link to="/search">Search</Link>
+                </li>
             </ul>
         </nav>
     );
