@@ -15,11 +15,10 @@ const Trending = () => {
             <div className="trending">
                 {trend.map((movie,id)=>{
                     return(
-                        <div className="card" key={movie.id}>
+                        <div className="card" key={id}>
                             <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt="Image not available" />
                             <p className="movieTitle">{movie.name || movie.original_title}</p>
                             <p className="movieVote">Rating: {movie.vote_average}</p>
-
                         </div>
                     );
                 })}
