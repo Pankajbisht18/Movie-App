@@ -3,7 +3,7 @@ import './Navbar.css';
 
 const Navbar = () => {
     return(
-        <nav>
+        <nav className="menu">
             <input type="checkbox" id="check" />
             <label for="check" className="checkbtn">
                 <i className="fas fa-bars"></i>

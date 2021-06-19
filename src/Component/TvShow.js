@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
+import CustomPagination from "./CustomPagination";
 const TvShow = () => {
+    const[page,setPage] = useState(1);
     const[Tv,setTv] = useState([])
     useEffect(()=>{
-        fetch('https://api.themoviedb.org/3/discover/tv?api_key=a619788e83ab1a8966b53d0814fc73d9&language=en-US&sort_by=popularity.desc&page=1&with_watch_monetization_types=flatrate')
+        fetch(`https://api.themoviedb.org/3/discover/tv?api_key=a619788e83ab1a8966b53d0814fc73d9&language=en-US&sort_by=popularity.desc&page=1&with_watch_monetization_types=flatrate&page=${page}`)
         .then(res=>res.json())
         .then(json=>setTv(json.results))
-    },[])
+    },[page])
     console.log(Tv);
     return(
         <div>
@@ -21,6 +23,9 @@ const TvShow = () => {
                     )
                 })}
             </div>
+            <CustomPagination 
+                setPage={setPage}
+            />
         </div>
     );
 }

@@ -1,14 +1,19 @@
 import { useState, useEffect } from "react";
+import CustomPagination from "./CustomPagination"; 
 import './Trending.css';
 
 const Trending = () => {
+    const [page, setPage] = useState(1)
     const [trend, setTrend] = useState([]);
+    const key = "a619788e83ab1a8966b53d0814fc73d9";
     useEffect(()=>{
-        fetch("https://api.themoviedb.org/3/trending/all/day?api_key=a619788e83ab1a8966b53d0814fc73d9")
+        fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${key}&page=${page}`)
         .then(res=>res.json())
-        .then(json => setTrend(json.results));
-    },[])
-    console.log(trend)
+        .then(json=>{
+            console.log(json);
+            setTrend(json.results)
+        })
+    },[page])
     return(
         <div>
             <h1 className="heading">Trending</h1>
@@ -23,6 +28,11 @@ const Trending = () => {
                     );
                 })}
             </div>
+            <>
+            <CustomPagination 
+                setPage={setPage}
+            />
+            </> 
         </div>
     );
 }
