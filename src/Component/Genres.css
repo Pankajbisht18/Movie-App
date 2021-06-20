@@ -1,0 +1,17 @@
+.genres{
+    padding-top: 20px;
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+}
+@media (max-width: 1200px){
+    .genres{
+        width: 80%;
+    }
+}
+@media (max-width: 800px){
+    .genres{
+        width: 95%;
+    }
+}

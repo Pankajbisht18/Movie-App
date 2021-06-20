@@ -1,4 +1,5 @@
 import Pagination from '@material-ui/lab/Pagination';
+import './Pagination.css';
 
 const CustomPagination = ({setPage, numOfPages=10}) => {
     const handlePageChange = (page) => {
@@ -6,18 +7,9 @@ const CustomPagination = ({setPage, numOfPages=10}) => {
         window.scroll(0,0)
     }
     return(
-        <div style={{
-            width:'100%',
-            display:'flex',
-            justifyContent:'center',
-            marginTop: '10px',
-            padding: '10px 0px',
-            background: '#DDDFDF',
-            color: '#fff'
-        }}>
+        <div className="pagination">
             <Pagination 
                 count={numOfPages}
-                size="large"
                 color="primary"
                 hideNextButton
                 hidePrevButton
