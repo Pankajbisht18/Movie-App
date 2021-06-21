@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import CustomePagination from './CustomPagination';
 import Genres from "./Genres";
+import useGenre from './Hooks/useGenre';
 
 const Movie = () => {
     const[page, setPage] = useState(1);
@@ -8,16 +9,16 @@ const Movie = () => {
     const[numOfPages, setNumOfPages] = useState()
     const[selectedGenres, setSelectedGenres] = useState([]);
     const[genres,setGenres] = useState([]);
-    /* const genreforURL = useGenre(selectedGenres); */
+    const genreforURL = useGenre(selectedGenres);
     
     useEffect(()=>{
-        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=a619788e83ab1a8966b53d0814fc73d9&language=en-US&sort_by=popularity.desc&include_video=true&with_watch_monetization_types=flatrate&page=${page}`)
+        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=a619788e83ab1a8966b53d0814fc73d9&language=en-US&sort_by=popularity.desc&include_video=true&with_watch_monetization_types=flatrate&page=${page}&with_genres=${genreforURL}`)
         .then(res=>res.json())
         .then(json=>{
             setMovie(json.results)
             setNumOfPages(json.total_pages)
         })
-    },[page])
+    },[page,genreforURL])
     return(
         <div>
             <h1 className="heading">Movie</h1>
