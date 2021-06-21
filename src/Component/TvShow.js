@@ -33,7 +33,7 @@ const TvShow = () => {
                 {Tv.map((tv,id)=>{
                     return(
                         <div className="card" key={id}>
-                            <img src={`https://image.tmdb.org/t/p/w300/${tv.poster_path}`} alt="Not available" />
+                            <img src={tv.poster_path ? `https://image.tmdb.org/t/p/w300/${tv.poster_path}` : `https://www.movienewz.com/img/films/poster-holder.jpg` } alt="Not Available" />
                             <p className="movieTitle">{tv.original_name}</p>
                             <p className="movieVote">Rating: {tv.vote_average}</p>
                         </div>
