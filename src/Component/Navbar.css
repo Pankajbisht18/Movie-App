@@ -54,7 +54,7 @@ label.logo{
     .checkbtn{
         display: block;
     }
-    ul{
+    .menu ul{
         position: fixed;
         width: 100%;
         height: 450px;
