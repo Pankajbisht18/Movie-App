@@ -28,3 +28,8 @@ input:focus{
 .Search-label label{
     padding: 10px;
 }
+@media (max-width: 800px){
+    .search{
+        margin-top:20px
+    }
+}
