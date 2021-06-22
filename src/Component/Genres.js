@@ -29,6 +29,7 @@ const Genres = ({
         fetch(`https://api.themoviedb.org/3/genre/${type}/list?api_key=${key}&language=en-US`)
         .then(res=>res.json())
         .then(json=>setData(json.genres))
+        // eslint-disable-next-line
     },[])
     return(
         <div className="genres">

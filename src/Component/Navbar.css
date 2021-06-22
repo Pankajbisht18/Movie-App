@@ -62,6 +62,7 @@ label.logo{
         top: 80px;
         left: -100%;
         text-align: center;
+        z-index: 1;
         transition: all .5s;
     }
     .menu ul li{
