@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import CustomPagination from "./CustomPagination"; 
+import {Link} from 'react-router-dom';
 import './Trending.css';
 
 const Trending = () => {
@@ -20,15 +21,17 @@ const Trending = () => {
             <div className="trending">
                 {trend.map((movie,id)=>{
                     return(
-                        <div className="card" key={id}>
-                            {/* <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt="Not available" /> */}
-                            <img 
-                                src={movie.poster_path ? `https://image.tmdb.org/t/p/w300/${movie.poster_path}` : `https://www.movienewz.com/img/films/poster-holder.jpg` } 
-                                alt="Not Available" 
-                            />
-                            <p className="movieTitle">{movie.name || movie.original_title}</p>
-                            <p className="movieVote">Rating: {movie.vote_average}</p>
-                        </div>
+                        <Link to={"/"+movie.id}>
+                            <div className="card" key={id}>
+                                {/* <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt="Not available" /> */}
+                                <img 
+                                    src={movie.poster_path ? `https://image.tmdb.org/t/p/w300/${movie.poster_path}` : `https://www.movienewz.com/img/films/poster-holder.jpg` } 
+                                    alt="Not Available" 
+                                />
+                                <p className="movieTitle">{movie.name || movie.original_title}</p>
+                                <p className="movieVote">Rating: {movie.vote_average}</p>
+                            </div>
+                        </Link>
                     );
                 })}
             </div>

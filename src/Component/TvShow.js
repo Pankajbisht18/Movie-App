@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import CustomPagination from "./CustomPagination";
 import Genres from './Genres';
 import useGenre from "./Hooks/useGenre";
+
 const TvShow = () => {
     const[page, setPage] = useState(1);
     const[Tv, setTv] = useState([]);
@@ -32,15 +34,17 @@ const TvShow = () => {
             <div className="trending">
                 {Tv.map((tv,id)=>{
                     return(
-                        <div className="card" key={id}>
-                            <img 
-                                src={tv.poster_path ? `https://image.tmdb.org/t/p/w300/${tv.poster_path}` : `https://www.movienewz.com/img/films/poster-holder.jpg` } 
-                                alt="Not Available" 
-                            />
-                            
-                            <p className="movieTitle">{tv.original_name}</p>
-                            <p className="movieVote">Rating: {tv.vote_average}</p>
-                        </div>
+                        <Link to={"/tvshow/"+tv.id}>
+                            <div className="card" key={id}>
+                                <img 
+                                    src={tv.poster_path ? `https://image.tmdb.org/t/p/w300/${tv.poster_path}` : `https://www.movienewz.com/img/films/poster-holder.jpg` } 
+                                    alt="Not Available" 
+                                />
+                                
+                                <p className="movieTitle">{tv.original_name}</p>
+                                <p className="movieVote">Rating: {tv.vote_average}</p>
+                            </div>
+                        </Link>
                     )
                 })}
             </div>

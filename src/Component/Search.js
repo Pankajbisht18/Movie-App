@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {Link} from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import CustomPagination from './CustomPagination';
 import './search.css';
@@ -68,14 +69,16 @@ const Search = () => {
                 {data &&
                 data.map((searchData,id)=>{
                     return(
-                        <div className="card" key={id}>
-                            <img 
-                                src={searchData.poster_path ? `https://image.tmdb.org/t/p/w300/${searchData.poster_path}` : `https://www.movienewz.com/img/films/poster-holder.jpg` } 
-                                alt="Not Available" 
-                            />
-                            <p className="movieTitle">{searchData.name || searchData.original_title}</p>
-                            <p className="movieVote">Rating: {searchData.vote_average}</p>
-                        </div>
+                        <Link to={"/search/"+searchData.id}>
+                            <div className="card" key={id}>
+                                <img 
+                                    src={searchData.poster_path ? `https://image.tmdb.org/t/p/w300/${searchData.poster_path}` : `https://www.movienewz.com/img/films/poster-holder.jpg` } 
+                                    alt="Not Available" 
+                                />
+                                <p className="movieTitle">{searchData.name || searchData.original_title}</p>
+                                <p className="movieVote">Rating: {searchData.vote_average}</p>
+                            </div>
+                        </Link>
                     );
                 })}
                 {!data &&

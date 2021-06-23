@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import {Link} from "react-router-dom";
 import CustomePagination from './CustomPagination';
 import Genres from "./Genres";
 import useGenre from './Hooks/useGenre';
@@ -33,14 +34,16 @@ const Movie = () => {
             <div className="trending">
                 {movie.map((mov,id)=>{
                     return(
-                        <div className="card" key={id}>
-                            <img 
-                                src={mov.poster_path ? `https://image.tmdb.org/t/p/w300/${mov.poster_path}` : `https://www.movienewz.com/img/films/poster-holder.jpg` } 
-                                alt="Not Available" 
-                            />
-                            <p className="movieTitle">{mov.original_title}</p>
-                            <p className="movieVote">Rating: {mov.vote_average}</p>
-                        </div>
+                        <Link to={"/movie/"+mov.id}>
+                            <div className="card" key={id}>
+                                <img 
+                                    src={mov.poster_path ? `https://image.tmdb.org/t/p/w300/${mov.poster_path}` : `https://www.movienewz.com/img/films/poster-holder.jpg` } 
+                                    alt="Not Available" 
+                                />
+                                <p className="movieTitle">{mov.original_title}</p>
+                                <p className="movieVote">Rating: {mov.vote_average}</p>
+                            </div>
+                        </Link>
                     )
                 })}
             </div>
