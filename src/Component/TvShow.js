@@ -34,8 +34,8 @@ const TvShow = () => {
             <div className="trending">
                 {Tv.map((tv,id)=>{
                     return(
-                        <Link to={"/tvshow/"+tv.id}>
-                            <div className="card" key={id}>
+                        <Link to={"/tvshow/"+tv.id} key={id}>
+                            <div className="card">
                                 <img 
                                     src={tv.poster_path ? `https://image.tmdb.org/t/p/w300/${tv.poster_path}` : `https://www.movienewz.com/img/films/poster-holder.jpg` } 
                                     alt="Not Available" 

@@ -69,8 +69,8 @@ const Search = () => {
                 {data &&
                 data.map((searchData,id)=>{
                     return(
-                        <Link to={"/search/"+searchData.id}>
-                            <div className="card" key={id}>
+                        <Link to={"/search/"+searchData.id} key={id}>
+                            <div className="card">
                                 <img 
                                     src={searchData.poster_path ? `https://image.tmdb.org/t/p/w300/${searchData.poster_path}` : `https://www.movienewz.com/img/films/poster-holder.jpg` } 
                                     alt="Not Available" 

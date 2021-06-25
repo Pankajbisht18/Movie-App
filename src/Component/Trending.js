@@ -21,9 +21,8 @@ const Trending = () => {
             <div className="trending">
                 {trend.map((movie,id)=>{
                     return(
-                        <Link to={"/"+movie.id}>
-                            <div className="card" key={id}>
-                                {/* <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt="Not available" /> */}
+                        <Link to={"/"+movie.media_type+"/"+movie.id} key={id}>
+                            <div className="card">
                                 <img 
                                     src={movie.poster_path ? `https://image.tmdb.org/t/p/w300/${movie.poster_path}` : `https://www.movienewz.com/img/films/poster-holder.jpg` } 
                                     alt="Not Available" 
