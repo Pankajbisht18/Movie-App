@@ -24,7 +24,7 @@ const ContentTrending = () => {
             <h1 className="content-heading">{data.original_title || data.name}</h1>
             <div className="content-box">
                 <div className="content-image">
-                    <img src={data.backdrop_path ? `https://image.tmdb.org/t/p/w500/${data.backdrop_path}` : `https://www.movienewz.com/img/films/poster-holder.jpg`}  alt={data.original_title} style={{height:"500px"}}/>
+                    <img src={data.backdrop_path ? `https://image.tmdb.org/t/p/w500/${data.backdrop_path}` : `https://www.movienewz.com/img/films/poster-holder.jpg`}  alt={data.original_title}/>
                 </div>
                 <div className="content-details">
                     <h2>{data.original_title || data.name}</h2>
@@ -32,7 +32,7 @@ const ContentTrending = () => {
                     <h4>Release-Date: {data.release_date || data.first_air_date}</h4>
                     <h4>Language: {data.original_language}</h4>
                     <p>{data.overview}</p>
-                    <div style={{display:"flex"}}>
+                    <div style={{display:"flex",flexWrap:"wrap"}}>
                         {genres.map((gen,id)=>{
                             return( 
                                     <div key={id} className="content-genres">
