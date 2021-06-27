@@ -20,7 +20,7 @@ const App = () => {
         <Route path="/:media_type/:id" component={Content} />
         <Route path="/movie/:media_type/:id" component={Content} />
         <Route path="/tvshow/:id" component={Content} />
-        <Route path="/search/:id" component={Content} />
+        <Route path="/search/:media_type/:id" component={Content} />
       </Switch>
     </>
   );

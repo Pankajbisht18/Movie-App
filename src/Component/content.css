@@ -4,9 +4,9 @@
     justify-content: center;
     width: 100%;
     letter-spacing: 5px;
-    font-family: Trebuchet MS;
+    font-family: Consolas;
     margin-top: 20px;
-    font-size: 50px;
+    font-size: 45px;
 }
 
 .content-box{
@@ -55,6 +55,7 @@
     margin: auto;
     padding: 10px;
     margin-top: 40px;
+    margin-bottom: 20px;
     width: 500px;
     border: none;
     background-color: #FF0000;
@@ -63,6 +64,7 @@
     font-family: consolas;
     font-size: 20px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 @media (max-width: 1600px) {

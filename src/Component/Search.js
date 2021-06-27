@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
-import SearchIcon from '@material-ui/icons/Search';
 import CustomPagination from './CustomPagination';
 import './search.css';
 
 const Search = () => {
     const[search, setSearch] = useState();
-    const[type, setType] = useState();
+    const[type, setType] = useState(null);
     const[data,setData] = useState([]);
     const[page, setPage] = useState(1);
     const[numOfPages, setNumOfPages] = useState();
-    const[check,setCheck] = useState();
+    //const[check,setCheck] = useState(null);
+    const[searchType, setSearchType] = useState();
 
     const key = "a619788e83ab1a8966b53d0814fc73d9"
     const handleSearch = (evt) => {
@@ -18,24 +18,31 @@ const Search = () => {
         setSearch(val);
     }
     const handleClick = () => {
-        fetch(`https://api.themoviedb.org/3/search/${type ? "tv" : "movie"}?api_key=${key}&language=en-US&query=${search}&page=${page}&include_adult=false`)
-        .then(res=>res.json())
-        .then(json=>{
-            setData(json.results)
-            setNumOfPages(json.total_pages);
-            setCheck(json);   
-        })
+        if(type !== null)
+        {
+            fetch(`https://api.themoviedb.org/3/search/${type ? "tv" : "movie"}?api_key=${key}&language=en-US&query=${search}&page=${page}&include_adult=false`)
+            .then(res=>res.json())
+            .then(json=>{
+                setData(json.results)
+                setNumOfPages(json.total_pages);
+                //setCheck(json);   
+             })
+        }
+        else{
+            alert("Kindly Select Type");
+        }
+        
     }
     const CheckType = (evt) => {
-        if(evt.target.value === "movie") {
+        let searchType = evt.target.value;
+        setSearchType(searchType);
+        if(searchType === "movie") {
             setType(0);
         }
         else {
             setType(1)
         }
     }
-    console.log(check)
-    console.log(data);
     return(
         <div className="search-page">
             <div className="search">
@@ -45,8 +52,9 @@ const Search = () => {
                     value={search}
                     onChange={handleSearch}
                 />
+                <br />
                 <button className="SearchBtn" onClick={handleClick}>
-                    <SearchIcon style={{width:"50px"}}/>
+                    Search
                 </button>
             </div>
             <div className="Search-label">
@@ -69,7 +77,7 @@ const Search = () => {
                 {data &&
                 data.map((searchData,id)=>{
                     return(
-                        <Link to={"/search/"+searchData.id} key={id}>
+                        <Link to={"/"+searchType+"/"+searchData.id} key={id}>
                             <div className="card">
                                 <img 
                                     src={searchData.poster_path ? `https://image.tmdb.org/t/p/w300/${searchData.poster_path}` : `https://www.movienewz.com/img/films/poster-holder.jpg` } 
